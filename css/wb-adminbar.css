@@ -1,0 +1,669 @@
+/* 20160810 WOOT - a better way to push the website DOWN after ALL THESE YEARS! */
+/********************* ADMINBUGS **************************/
+@font-face {
+    font-family: 'wunderfont';
+    src: url('fonts/Ubuntu-R-webfont.eot');
+    src: url('fonts/Ubuntu-R-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/Ubuntu-R-webfont.woff') format('woff'),
+         url('fonts/Ubuntu-R-webfont.ttf') format('truetype'),
+         url('fonts/Ubuntu-R-webfont.svg#UbuntuRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+	}
+
+span.ekwrap, span.ekowrap{
+	border-image-width:0 !important;
+	font-size:0 !important;
+	/*20120807 the edit bugs are absolute positioned, but wrapped in a 0-size inline outer display*/
+	outline: none !important;
+	border:0 !important;
+	width:0px !important;
+	height:0px !important;
+	box-shadow:none !important;
+	position: relative  !important;
+	top:-10px;
+	left:0px;
+	display: inline !important; /*or maybe table-cell which works for hrd 20150406*/
+/*	display: inline-block !important; */
+	line-height:0 !important; /*20150323 line height also needs to be set?! */
+	/*but nmaybe the problem was line-height*/
+	/*inline-block didn't work (added height) for Stukalin??? 20141119
+	/*inline-block didn't work for boyd??? 20140224
+	display: block !important;
+
+/* 
+	We CAN'T float left for things that are span/li menu items wrapped in nothing
+	We may have to consider a 3rd clas for thew span/spans, so span/section CAN be floated left.
+	float:left;
+ */
+	vertical-align:top;
+	padding:0 !important;
+	margin:0 !important;
+	float:none !important;
+	}
+
+img.ekobjdrag {opacity:.5 !important}
+
+section.ekEditWrap, section.ekAddWrap, span.ekEditWrap, span.ekAddWrap {
+/* 
+	display:inline-block !important; /* 20141009 TXSteak taking this out so things that float nearby will work
+	width:auto !important;
+	return to width 100% becuase we're only doing it to SECTIONS. 
+	But it may break PEVL
+ */
+	outline-width:0 !important;
+	outline-style:none !important;
+	border:0 !important;
+	margin:0;
+	padding:0;
+	
+	float:none !important;
+	width:100% !important; 
+	}
+
+section.ekEditWrap:hover, span.ekEditWrap:hover, div.ekEditWrap:hover {
+	outline-width:1px !important;
+	outline-style:dotted !important;
+	outline-color: rgba(255,0,0,0) ;
+	-webkit-animation: fadeOutline 8s linear;
+	-moz-animation: fadeOutline 8s linear;
+	-o-animation: fadeOutline 8s linear;
+	animation: fadeOutline 8s linear;
+	}
+
+@-webkit-keyframes fadeOutline{ 
+   0%{outline-color: rgba(255,0,0,1);} 
+   25%{outline-color: rgba(255,0,0,1);} 
+   100%{ outline-color: rgba(255,0,0,0);} }
+@-moz-keyframes fadeOutline{ 
+   0%{outline-color: rgba(255,0,0,1);} 
+   25%{outline-color: rgba(255,0,0,1);} 
+   100%{ outline-color: rgba(255,0,0,0);} }
+ @-o-keyframes fadeOutline{ 
+   0%{outline-color: rgba(255,0,0,1);} 
+   25%{outline-color: rgba(255,0,0,1);} 
+   100%{ outline-color: rgba(255,0,0,0);} }
+ @keyframes fadeOutline{ 
+   0%{outline-color: rgba(255,0,0,1); } 
+   25%{outline-color: rgba(255,0,0,1);} 
+   100%{outline-color: rgba(255,0,0,0); } }
+ 
+
+@media screen and (min-width:0\0) {  
+	section.ekCurrentEditArea {border:0\0; } 
+	}
+	
+span.ekowrap {display:inline-block !important; left:33%; top:5%; z-index:99999}
+#cke_1_top {width:auto;}
+
+span.ekmenu, span.ekomenu {
+	outline: none !important;
+	position:absolute  !important;
+	display: block; /*don't say important, or jquery can't change visibility*/
+	left:0  !important; /*20120328 was auto, but chang likes 0? */
+	top:10px  !important;
+	width:auto  !important; /*20110216 used to be 51px width of three together*/
+	min-width:auto  !important; /*20110216 used to be 51px width of three together*/
+	height:18px  !important;
+	margin:0  !important;
+	padding:0 !important;
+	border:0 !important;
+	overflow:visible  !important;
+	z-index:998 !important;
+	white-space:nowrap !important;
+	}
+
+span.ekomenu {
+	z-index:997 !important;
+	}
+
+#wunderbar_action_menu a { cursor:pointer;}
+#klipEditCommands a { cursor:pointer;}
+	
+span.ekmenu a, span.ekmenu a:hover, span.ekomenu a, span.ekomenu a:hover {
+	display:block !important;
+	float:left !important;
+	display:inline-block !important;
+	float:none !important;
+	padding:0 !important;
+	border: 0 !important;
+	margin: 0 !important;
+	font-size: 10px !important;
+	line-height:9px !important;
+	width:20px !important;
+	min-width:20px !important;
+	min-height:20px !important;
+	height:19px !important;
+	background:none !important;
+	box-shadow:none !important;
+	text-decoration: none !important;
+	filter:progid:DXImageTransform.Microsoft.gradient(enabled=false) !important;
+	}
+
+span.ekembed{
+	margin-left:2px !important;
+	margin-top:8px !important;
+	}
+
+	
+span.ekomenu a.formbug, span.ekomenu a.formbug:hover, 
+span.ekomenu a.objectbug, span.ekomenu a.objectbug:hover {margin-left:22px !important}
+
+span.ekmenu a.editbug	{background: url(../images/wb-editbug.png) 0 0 no-repeat !important;//transform: rotate(0deg) !important; transition-duration:.3s}
+span.ekmenu a.addbug	{background: url(../images/klip-add.gif) 0 0 no-repeat !important;}
+
+
+/* 
+span.ekmenu a.editbug:hover	{transform: rotate(75deg) !important; transition-duration:.2s}
+span.ekmenu a.addbug:hover	{background: url(../images/klip-add-hover.gif) 0 0 no-repeat !important;}
+ */
+
+/* try to highlight the area we'll be editing - as long as we're not in it already! */
+span.ekwrap:hover + span:not(.ekCurrentEditArea), span.ekwrap:hover + section:not(.ekCurrentEditArea) {background-color:rgba(255,0,0,.05);transition-duration:.3s; }
+
+span.ekmenu a.editbug:hover{ 
+	cursor: crosshair;
+    -moz-animation:.6s rotateRight infinite linear; 
+    -webkit-animation:.6s rotateRight infinite linear; 
+	}
+
+@-moz-keyframes rotateRight{
+    0%{ -moz-transform:rotate(0deg); -moz-transform-origin:50% 50%; }
+    100%{ -moz-transform:rotate(360deg); }
+	}
+
+@-webkit-keyframes rotateRight{
+    0%{ -webkit-transform:rotate(0deg); -webkit-transform-origin:50% 50%; }
+    100%{ -webkit-transform:rotate(360deg); }
+	}
+
+
+@media print { span.ekmenu, span.ekomenu {display:none !important;} }
+
+/*************ADMINBAR ***************/
+#wunderbarAdmin * {box-sizing: content-box; }
+
+html.wbadmin  {margin-top:64px !important;}
+html.wbadmin #wpadminbar {top:32px !important;}
+
+
+html.wbadmin #wunderbarAdmin {
+	position:fixed !important;
+	width:100%;
+	height:32px;
+	top:0;
+	left:0;
+	z-index:100000;
+	font-size: 11px !important;
+	font-family: wunderfont !important;
+	line-height:15px ;
+	background:#23282d;
+	background: -moz-linear-gradient(
+		top,
+		#5b5b5b 0%,
+		#23282d);
+	background: -webkit-gradient(
+		linear, left top, left bottom, 
+		from(#5b5b5b),
+		to(#23282d));
+	border-bottom:1px solid #23282d;
+	}
+
+
+html.wbadminbottom #wunderbarAdmin {
+	bottom:0px;
+	top:auto;
+	}
+
+html.wbadminbottom  {margin-top:0 !important;}
+html.wbadminbottom #wpadminbar {top:0 !important;}
+
+
+#wunderbarAdmin  * {
+	font-family: wunderfont;
+	}
+	
+
+#wunderbarAdmin input, #wunderbarAdmin select {displaY:inline;}
+#wunderbarAdmin input{ line-height:15px;height :15px;}
+
+#wbinterior {
+	position:relative;
+	height:32px;
+	color:#888888;
+	}
+
+#wbinterior tr, #wbinterior td {padding:0 !important; margin 0 !important}
+
+#wbinterior.bottom {
+	position:fixed;
+	bottom:0px;
+	top:auto;
+	}
+
+#wbinterior a {border:none;}
+
+#wbinterior .arrow-down {
+	display:inline-block;
+	width: 0; 
+	height: 0; 
+	border-left: 5px solid transparent;
+	border-right: 5px solid transparent;	
+	border-top: 5px solid #888;
+	}
+#wbinterior a:hover .arrow-down {border-top: 6px solid #fff;}
+
+#wbinterior .arrow-right {
+	display:inline-block;
+	width: 0; 
+	height: 0; 
+	border-top: 5px solid transparent;
+	border-bottom: 5px solid transparent;	
+	border-left: 5px solid #888;
+	}
+#wbinterior a:hover .arrow-right {border-left: 6px solid #fff;}
+
+#wbinterior .arrow-left {
+	display:inline-block;
+	width: 0; 
+	height: 0; 
+	border-top: 5px solid transparent;
+	border-bottom: 5px solid transparent;	
+	border-right: 5px solid #888;
+	}
+#wbinterior a:hover .arrow-left {border-right: 6px solid #fff;}
+
+#wunderbarAdmin p {
+	margin:0;
+	padding:0;
+	color:#888;
+	font-size:11px
+	}
+
+/*start with all interface elements hidden;*/
+#wunderbarAdmin .interface, #wunderbarAdmin .editor {
+	visibility:hidden;
+	}
+
+div#klipEditPanel{ 
+	position:absolute;
+	top:4px; 
+	padding-left:90px;
+	z-index:11
+	} 
+
+#wunderbarAdmin #wunderbarlogo {
+	position: absolute;
+	top:4px;
+	height:28px;
+	left:4px;
+	z-index:20;
+	width:100%;
+	background: -moz-linear-gradient(
+		top,
+		#5b5b5b 0%,
+		#23282d);
+	background: -webkit-gradient(
+		linear, left top, left bottom, 
+		from(#5b5b5b),
+		to(#23282d));
+	}
+
+#wunderbarAdmin #wunderbarlogo a{
+	display:inline-block;
+	color:#888;
+	text-decoration:none;
+	border-radius:3px;
+	}
+
+#wunderbarAdmin #wunderbarlogo img{
+	vertical-align:baseline;
+	}
+
+#wunderbarAdmin #wunderbarlogo span{
+	font-size:11px;
+	font-family:wunderfont;
+	position:relative;
+	top:-5px;
+	margin:0 10px 0 0;	
+	}
+
+#wunderbarAdmin #wunderbarlogo a:hover{
+	color:#00b9eb;
+	background: rgba(255,255,255,.1);
+	}
+	
+
+#wunderbarAdmin div#klipEditIntro, #wunderbarAdmin div.klipEditProperties {
+	vertical-align:bottom;
+	height:20px;
+	padding:6px;
+	display:block;
+	float:left;
+	position:relative;
+	z-index:10;
+	}
+
+#wunderbarAdmin #klipAdminPanel {
+	vertical-align:top;
+	display:block;
+	position:absolute;
+	top:4px; 
+	left:135px;
+	z-index:12;
+	}
+
+#wunderbarAdmin #klipAdminPanel ul {margin:0; padding:0;}
+
+#wunderbarAdmin #klipAdminPanel li {
+	display:inline-block;
+	float:left; 
+	list-style-type:none;
+	border-right:1px solid #5b73b3;
+	padding:0; margin:0;
+	}
+
+#wunderbarAdmin #klipAdminPanel li#ek_editheader {display:none;}
+
+#wunderbarAdmin #klipAdminPanel a {
+	color:gray;
+	transition-duration: .5s;
+	display:block;
+	text-decoration:none;
+	padding:0 10px; 
+	padding-top:12px;
+	}
+
+#wunderbarAdmin #klipAdminPanel .textbox a {display:inline; padding:12px 10px;}
+
+#wunderbarAdmin #klipAdminPanel a:hover {
+	color:white;
+	transition-duration: .3s;
+	}
+
+#wunderbarAdmin #klipAdminPanel a.set {
+	color:#588a47;
+
+	background: -moz-linear-gradient(
+		top,
+		#404040 0%,
+		#505050);
+	background: -webkit-gradient(
+		linear, left top, left bottom, 
+		from(#404040),
+		to(#505050));
+	}
+
+#wunderbarAdmin div#klipEditIntro { z-index:12;} /*make sure it's on TOP of id div, so popup works right*/
+
+#ekf_sortorder {text-align:center;}
+
+#wunderbarAdmin div#klipEditIntro img{ padding: 0 ; margin 0; display:block; border:none !important}
+
+#wunderbarAdmin .interface td {white-space:nowrap}
+
+#wunderbarAdmin .rightalign {text-align:right !important;}
+
+#wunderbarAdmin input.radio {width:auto; margin:0; padding:0; border:0; background:none; dispLay:inline; line-height:11px; height:11px;}
+
+#wbinterior input:focus {box-shadow:none}
+ 
+#wunderbarAdmin div.button, #wunderbarAdmin a.button, #wunderbarAdmin input.button, #navrow a, #edgtoolbar span.l-btn-text {
+	display:inline-block !important;
+	color: #888888 !important;
+	width:auto !important;
+	height:13px !important;
+	line-height:11px !important;
+	margin:0px 2px !important;
+	padding:2px 4px !important;
+	font-size: 11px !important;
+	line-height: 11px !important;
+	font-family: wunderfont;
+	text-align:center !important;
+	text-decoration:none !important;
+	text-shadow:none !important;
+		    border-radius: 4px !important;
+	   -moz-border-radius: 4px !important;
+	-webkit-border-radius: 4px !important;
+	border: 1px solid #111 !important;
+	border-bottom:1px solid #777 !important;
+	box-shadow:none !important;
+	position:relative !important;
+
+	background: #3f3f3f; /* Old browsers */
+	background: linear-gradient (0deg, #3f3f3f, #262626);
+
+	background: -moz-linear-gradient(top, #3f3f3f 0%, #262626 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#3f3f3f), color-stop(100%,#262626)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #3f3f3f 0%,#262626 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #3f3f3f 0%,#262626 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #3f3f3f 0%,#262626 100%); /* IE10+ */
+	background: linear-gradient(to bottom, #3f3f3f 0%,#262626 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3f3f3f', endColorstr='#262626',GradientType=0 ); /* IE6-9 */
+	}
+
+#navrow a {margin-right:10px;}
+
+
+ #wunderbarAdmin input.button {
+	margin-right:4px !important;
+	height:13px !important;
+	padding:2px 4px 4px 4px !important;
+	width:auto;
+	}
+
+#wunderbarAdmin a.button:hover, #wunderbarAdmin div.button:hover, #wunderbarAdmin input.button:hover, #navrow a:hover, #edgtoolbar span.l-btn-text:hover, #wbinterior #viewingdate input.faint:hover {
+	color:white !important;
+	}
+
+#wunderbarAdmin div.button>a {color:#888888; text-decoration:none;}
+#wunderbarAdmin div.button>a:hover {color:white}
+#wunderbarAdmin div.button>a.save { color:#588a47;}
+#wunderbarAdmin div.button>a.save:hover { color:#58fa47;}
+
+
+#wunderbarAdmin table, #wunderbarAdmin td, #wunderbarAdmin th {
+	padding:0; margin:0; border:0; border-spacing:0;
+	background:none;
+	background-color:none
+	color:#888;
+	font-family:inherit;
+	font-size:11px;
+	vertical-align:top;
+	}
+
+ #wunderbarAdmin input.input, #wunderbarAdmin select, #navrow select, .pagination select, #edgtoolbar input.input {
+	width:100px;
+	background:none;
+	margin:0;
+	border-radius:4px;
+	border:0 ;
+	box-shadow:none;
+	padding:2px 3px !important;
+	font-size:11px;
+	line-height:11px;
+	height:11px;
+	color: #ddd;
+	font-family: wunderfont;
+	border:1px solid transparent !important;
+	}
+
+#wunderbarAdmin input.input:hover, #wunderbarAdmin input.input:focus, #edgtoolbar input.input:hover, #edgtoolbar input.input:focus   {
+	border:1px solid #010101 !important;
+	border-left:1px solid #7a7a7a !important;
+	border-top:1px solid #7a7a7a !important;
+	background:#6a6a6a !important;
+	color:#fff;
+	}
+
+#wunderbarAdmin input.textbox-text{
+	width:100px !important;
+	background:none !important;
+	margin:1px !important;
+	border:0 !important;
+	border-radius:4px !important;
+	box-shadow:none;
+	padding:2px 3px !important;
+	font-size:11px !important;
+	line-height:11px !important;
+	height:11px !important;
+	color:#ddd !important;
+	border:1px solid transparent !important;
+	}
+
+#wunderbarAdmin input.textbox-text:hover, #wunderbarAdmin input.textbox-text:focus{
+	border:1px solid #010101 !important;
+	border-left:1px solid #7a7a7a !important;
+	border-top:1px solid #7a7a7a !important;
+	background:#6a6a6a !important;
+	color:#fff !important;
+	}
+#wunderbarAdmin span.datebox {width:180px !important;}
+
+#wunderbarAdmin .datebox input.textbox-text, #wunderbarAdmin .datebox input.textbox-value {
+	width:150px !important;
+	}
+
+	
+#wunderbarAdmin .textbox-icon.combo-arrow{
+	height:20px !important;
+	}
+
+
+#wunderbarAdmin label {
+	display:inline-block !important;
+	width:auto !important;
+	color:#888;
+	font-size:11px;
+	font-family: wunderfont;
+	}
+
+#wunderbarAdmin select, #navrow select, .pagination select, #searchfield  {
+	border:0 !important;
+	margin:2px !important;
+	padding:1px !important;
+	background:#262626 !important;
+	color: #777 !important;
+	font-size:11px;
+	line-height:11px !important;
+	height:15px !important;
+	font-family: wunderfont;
+	height:14px;
+	}
+
+#wunderbarAdmin .w75, #navrow .w75, .w75  {width:75px !important;}
+#wunderbarAdmin .w100, #navrow .w100, .w100 {width:100px !important;}
+#wunderbarAdmin .w125, #navrow .w125, .w125 {width:125px !important;}
+#wunderbarAdmin .w150, #navrow .w150, .w150 {width:150px !important;}
+#wunderbarAdmin .w200, #navrow .w200, .w200 {width:200px !important;}
+#wunderbarAdmin .w250, #navrow .w250, .w250 {width:250px !important;}
+#wunderbarAdmin .w300, #navrow .w300, .w300 {width:300px !important;}
+#wunderbarAdmin .w350, #navrow .w350, .w350 {width:350px !important;}
+#wunderbarAdmin .w400, #navrow .w400, .w400 {width:400px !important;}
+
+.pagination select {width:50px; margin-left:20px; margin-right:20px}
+
+#ekf_lastedit {text-align:center;}
+
+#wunderbarAdmin .input:focus {
+	background:#fff;
+	border:1px solid #666;
+	}
+
+#ekinvisibles {
+	width:450px;
+	display:block;}
+	
+#wunderbarAdmin .button ul {
+	display:block; 
+    margin: 0;
+    padding: 0;
+	position:absolute;
+	background:#bbb;
+	width:200px;
+	box-shadow: 0 0 16px rgba(64,64,64,.5);
+	left:-5000px;
+	}
+
+.wbadminbottom #wunderbarAdmin .button ul {
+	bottom:16px;
+	}
+
+#wunderbarAdmin .button:hover ul {
+	left:-10px;
+	}
+
+    
+#wunderbarAdmin .button ul li {display:block; 
+	padding:2px 6px;
+	display:block;
+	list-style-type:none;
+	text-align:left;
+	margin:0;
+	text-transform: none;
+	font-weight:normal;
+	}
+
+#wunderbarAdmin .button ul li.divider {
+	border-bottom:1px solid #999;
+	}
+
+#wunderbarAdmin .button ul li a {color:black;
+	text-decoration:none;
+	display:block;
+	font-size:11px;
+	line-height:14px;
+	}
+
+#wunderbarAdmin .button ul li:hover {
+	background:#ccc;
+	}
+
+//amazing ipad dropdown fix: http://www.elfboy.com/blog/making_css_drop_down_menus_work_on_the_iphone/
+#wunderbarAdmin .button ul { display: none; }
+#wunderbarAdmin .button li:hover ul { display: block; }
+
+
+div#cke_1_top {min-width:auto !important;} /* override ckeditor min width */
+span.cke_toolbar {min-height:24px;}
+
+@media print {
+	span.ekmenu, span.ekomenu {display:none !important;} 
+	html.wbadmin {margin-top:0 !important;}
+	html.wbadmin #wunderbarAdmin {display:none !important;}
+	html.wbadmin #wpadminbar {display:none !important;}
+	html.wbadminbottom #wpadminbar {display:none !important;}
+ 	}
+
+ @media (max-width: 1055px) {
+	html.wbadmin  {margin-top:92px !important;}
+	html.wbadmin #wunderbarAdmin {height:60px;}
+	html.wbadmin #wpadminbar {top:60px !important;}
+	html.wbadminbottom #wpadminbar {top:0 !important;}
+	html.wbadminbottom #wpadminbar {margin-top:0px !important;}
+	#wunderbarAdmin #wunderbarlogo {	height:56px;}
+  }
+
+ @media (max-width: 662px) {
+	html.wbadmin  {margin-top:116px !important;}
+	html.wbadmin #wunderbarAdmin {height:84px;}
+	html.wbadmin #wpadminbar {top:84px !important;}
+	html.wbadminbottom #wpadminbar {top:0 !important;}
+	html.wbadminbottom #wpadminbar {margin-top:0px !important;}
+	#wunderbarAdmin #wunderbarlogo {	height:80px;}
+
+  }
+
+ @media (max-width: 500px) {
+	html.wbadmin  {margin-top:92px !important;}
+	html.wbadmin #wunderbarAdmin {height:60px;}
+	html.wbadmin #wpadminbar {top:60px !important;}
+	html.wbadminbottom #wpadminbar {top:0 !important;}
+	html.wbadminbottom #wpadminbar {margin-top:0px !important;}
+	#wunderbarAdmin #wunderbarlogo {	height:56px;}
+  }
+
+
+/*overrides for ckeditor */
+a.cke_dialog_ui_button, a.cke_dialog_close_button, a.cke_dialog_ui_button:hover {transition-duration:0; transition-delay:0; transition:none;}
+

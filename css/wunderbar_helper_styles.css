@@ -1,0 +1,27 @@
+.wbar_grid {display:grid ;
+	grid-template-columns: repeat(12,1fr);
+	grid-column-gap: 1em;
+	grid-row-gap: 1em;
+	}
+	.wbar_grid > * {grid-column: span 12;} /* default to full width */
+	.wbar_grid > .wbar_full {grid-column: span 12}
+	.wbar_grid > .wbar_threefourth {grid-column: span 9}
+	.wbar_grid > .wbar_twothird {grid-column: span 8}
+	.wbar_grid > .wbar_half {grid-column: span 6}
+	.wbar_grid > .wbar_third {grid-column: span 4}
+	.wbar_grid > .wbar_fourth {grid-column: span 3}
+	.wbar_grid > .wbar_sixth {grid-column: span 2}
+	.wbar_fullwidth {width: 100vw; left: 50%; right: 50%; position: relative; margin-left: -50vw; margin-right: -50vw;}
+
+	#tinymce .wbar_full, 
+	#tinymce .wbar_threefourth, 
+	#tinymce .wbar_twothird, 
+	#tinymce .wbar_half, 
+	#tinymce .wbar_third, 
+	#tinymce .wbar_fourth, 
+	#tinymce .wbar_sixth  {outline: 1px dotted #666; padding: 3px;} 
+
+@media (max-width: 768px) {
+	.wbar_grid {display:block !important;}
+	#tinymce > .wbar_grid {display:grid !important;}
+	}

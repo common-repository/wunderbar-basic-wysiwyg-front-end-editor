@@ -1,0 +1,66 @@
+/* 
+Copyright (c) 2003-2013, CKSource - Frederico Knabben. All rights reserved.
+For licensing, see LICENSE.html or http://ckeditor.com/license
+
+"Source" button label.cke_button__source_label,
+.cke_button__sourcedialog_label
+{
+	display: inline;
+}
+
+"Font Size" combo width.cke_combo__fontsize .cke_combo_text
+{
+	width: 20px !important;
+}
+
+"Font Size" panel size.cke_combopanel__fontsize
+{
+	width: 120px;
+}
+
+Editable regions.cke_source
+{
+	font-family: 'Courier New' , Monospace;
+	font-size: small;
+	background-color: #fff;
+	white-space: pre;
+}
+
+.cke_wysiwyg_frame, .cke_wysiwyg_div
+{
+	background-color: #fff;
+}
+ */
+
+/* Overrides */
+
+/* 
+.cke_combo.cke_combo__styles .cke_combo_text {
+	width:40px;
+	}
+ */
+
+.cke_combo.cke_combo__format .cke_combo_text {
+	width:50px;
+	}
+.cke_combo.cke_combo__font .cke_combo_text {
+	width:40px;
+	}
+
+.cke_combo.cke_combo__letterspacing .cke_combo_text {
+	width:10px;
+	background:url(images/letter-spacing.png);
+	background-size: 16px auto;
+	background-repeat:no-repeat;
+	background-position: 5px 50%;
+	opacity:.55;
+	}
+
+.cke_combo.cke_combo__lineheight .cke_combo_text {
+	width:17px;
+	background:url(images/line-height.png);
+	background-size: 16px auto;
+	background-repeat:no-repeat;
+	background-position: 7px 40%;
+	opacity:.55;
+	}
